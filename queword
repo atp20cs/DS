@@ -1,0 +1,52 @@
+#include<stdio.h>
+char queue[100];
+int rear=-1,front=1;
+int size;
+void enq(char x)
+{
+    if(rear==size-1)
+    {
+        printf("\nqueue overflow");
+    }
+    else
+    {
+        rear+=1;
+        queue[rear]=x;
+        front=0;
+    }
+}
+char deq()
+{
+    char item;
+    if(front==-1)
+    {
+        printf("\nQueue underflow");
+    }
+    else
+    {
+        item=queue[front];
+		front=front+1;
+    }
+    return item;
+}
+void main()
+{
+    char str[10];
+    char *p;
+    p=str;
+    printf("enter the size: ");
+    scanf("%d",&size);
+    printf("enter the string : ");
+    scanf("%s",str);
+    while(*p!='\0')
+    {
+        enq(*p);
+        p++;
+    }
+    printf("\noutput : ");
+    while(front!=-1 ||rear<!front)
+    {
+        printf("%c",deq());
+    }
+
+}
